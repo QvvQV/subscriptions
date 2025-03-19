@@ -16,12 +16,6 @@ public class ClientPrime extends Driver {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy (name = "email")
-    private static WebElement email;
-
-    @FindBy(name = "password")
-    private static WebElement password;
-
     @FindBy(xpath = "//*[@id=\"root\"]/div[2]/div/div/div[2]/div/button")
     private static WebElement enterBtn;
 
@@ -94,15 +88,6 @@ public static void getChangeLite(){ //Lite + main
     change_control.click();
 }
 
-    public static void getEmail(){
-        email.sendKeys("modalka3@test.ru");
-    }
-//deleteProd@test.ru
-//    astro45@test.ru
-
-    public static void getPassword(){
-        password.sendKeys("12345678");
-    }
 
     public static void setLoad(){
         Duration.ofSeconds(6000);
@@ -140,6 +125,8 @@ public static void getChangeLite(){ //Lite + main
         search.sendKeys("no");
     }
 
+    public static void getNameSearch(){search.sendKeys("Крав");}
+
     public static void setExcel_table(){
         excel_table.click();
     }
@@ -173,19 +160,16 @@ public static void getChangeLite(){ //Lite + main
     }
 
     public static String getMenuSearch(){
-        nameSearch.getText();
-        return "Notion";
+       return nameSearch.getText();
     }
 
     public static String getTextLite(){
-    textLite.getText().trim();
-    return "Тарифный план “Полный доступ” отключен";
-    }
+    return textLite.getText().trim();
+        }
 
     public static String getTextChange(){
-    textChange.getText().trim();
-    return "Тарифный план “Лайт” отключен";
-    }
+    return textChange.getText().trim();
+        }
 
     public static void getChange(){
     btn_change.click();

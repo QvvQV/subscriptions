@@ -37,13 +37,6 @@ public class PayMain extends Driver {
         Dostup.click();
     }
 
-    @FindBy(css = "body > div > section.w-full.bg-\\[\\#7200CC\\].py-\\[60px\\].px-\\[50px\\].rounded-\\[20px\\].mb-\\[40px\\].max-sm\\:p-\\[30px\\].font-nunito.order-section > div > div > div > form > input")
-    private static WebElement email;
-
-    public static void inputEmail() {
-        email.sendKeys("qa@test.ru");
-    }
-
     @FindBy(css = "body > widget-host-root > tui-root > tui-dropdowns > div > div > div > div > div > payment-module-frontend-payment-module-entry > payment-module-layout > div > div > div > card-pay-frontend-card-pay-entry > card-pay-button > button")
     private static WebElement BankBtn;
 
@@ -104,5 +97,4 @@ public class PayMain extends Driver {
         public static void btnSuccess() {
         success.click();
     }
-
 }

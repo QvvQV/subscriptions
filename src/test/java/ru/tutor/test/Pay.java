@@ -9,9 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.tutor.page.ClientPrime;
-import ru.tutor.page.PayMain;
-import ru.tutor.page.kontacts;
+import ru.tutor.page.*;
 
 import java.time.Duration;
 
@@ -34,6 +32,8 @@ public class Pay {
         ClientPrime Client = new ClientPrime(driver);
         kontacts kontacts = new kontacts(driver);
         PayMain Pay = new PayMain(driver);
+        kurs kurs = new kurs(driver);
+        LoginAndPass loginAndPass = new LoginAndPass(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get(url);
     }
@@ -52,7 +52,7 @@ public class Pay {
         wait.until(visibilityOfElementLocated(By.id("access-button")));
         sleep(800);
         PayMain.PgUp();
-        PayMain.inputEmail();
+        LoginAndPass.inputEmail();
         sleep(200);
         PayMain.getDostup();
         sleep(700);
@@ -77,7 +77,7 @@ public class Pay {
         wait.until(visibilityOfElementLocated(By.id("access-button")));
         sleep(800);
         PayMain.PgUp();
-        PayMain.inputEmail();
+        LoginAndPass.inputEmail();
         sleep(200);
         PayMain.getDostup();
         sleep(700);
@@ -102,7 +102,7 @@ public class Pay {
         wait.until(visibilityOfElementLocated(By.id("access-button")));
         sleep(800);
         PayMain.PgUp();
-        PayMain.inputEmail();
+        LoginAndPass.inputEmail();
         sleep(200);
         PayMain.getDostup();
         sleep(700);
@@ -117,6 +117,7 @@ public class Pay {
         PayMain.getPay();
         driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
         PayMain.btnSuccess();
-//        wait.until(visibilityOfElementLocated(By.cssSelector("body > div > div > section > h2")));
+        wait.until(visibilityOfElementLocated(By.cssSelector("body > div > div > section > h2")));
     }
+
 }

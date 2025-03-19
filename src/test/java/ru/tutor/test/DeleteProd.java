@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.tutor.page.ClientPrime;
+import ru.tutor.page.LoginAndPass;
 import ru.tutor.page.WatchVideo;
 import ru.tutor.page.kontacts;
 
@@ -44,8 +45,8 @@ public class DeleteProd {
     @Test
     @DisplayName("Should delete prod Prime")
     public void ShouldDeleteProdPrime() {
-        ClientPrime.getEmail();
-        ClientPrime.getPassword();
+        LoginAndPass.getEmail();
+        LoginAndPass.getPassword();
         ClientPrime.btnEnter();
         ClientPrime.setLoad();
         ClientPrime.contBtn();
@@ -69,8 +70,8 @@ public class DeleteProd {
     @Test
     @DisplayName("Should delete prod Lite")
     public void ShouldDeleteProdLite() throws InterruptedException {
-        ClientPrime.getEmail();
-        ClientPrime.getPassword();
+        LoginAndPass.getEmail();
+        LoginAndPass.getPassword();
         ClientPrime.btnEnter();
         sleep(6000);
 //        ClientPrime.setLoad();
@@ -84,8 +85,8 @@ public class DeleteProd {
     @Test
     @DisplayName("Should delete prod Lite")
     public void ShouldDeleteLite() throws InterruptedException {
-        ClientPrime.getEmail();
-        ClientPrime.getPassword();
+        LoginAndPass.getEmail();
+        LoginAndPass.getPassword();
         ClientPrime.btnEnter();
         sleep(6000);
 //        ClientPrime.setLoad();
@@ -99,8 +100,8 @@ public class DeleteProd {
     @Test
     @DisplayName("Should play Video")
     public void ShouldPlayVideo() throws InterruptedException {
-        ClientPrime.getEmail();
-        ClientPrime.getPassword();
+        LoginAndPass.getEmail();
+        LoginAndPass.getPassword();
         ClientPrime.btnEnter();
         sleep(6000);
         driver.get("https://client.dev.tutorplace.ru/user/catalog");
