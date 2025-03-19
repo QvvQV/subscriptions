@@ -29,7 +29,7 @@ public class LoginAndPass extends Driver {
     private static WebElement emailReg;
 
     public static void getEmail() {
-        emailReg.sendKeys("coins@test.ru");
+        emailReg.sendKeys("gogi@test.ru");
     }
 
     //deleteProd@test.ru

@@ -30,6 +30,7 @@ public class coins_dimonds {
         kontacts kontacts = new kontacts(driver);
         PayMain Pay = new PayMain(driver);
         Dimonds dimonds = new Dimonds(driver);
+        LoginAndPass loginAndPass = new LoginAndPass(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get(url);
     }
@@ -96,10 +97,11 @@ public class coins_dimonds {
         Assert.assertEquals("Также вы имеете возможность крутить колесо за монетки — которые легко заработать занимаясь саморазвитием: проходя уроки, выполняя задания и прокачивая свой уровень", Dimonds.textSecondModal());
         Dimonds.clickCrossBtn();
         sleep(100);
-//        Dimonds.btnTwist();
-//        sleep(500);
-//        Dimonds.btnTwistCross();
-        Assert.assertEquals("КРУТИТЬ\n100",Dimonds.textTwist());
+        Assert.assertEquals("КРУТИТЬ", Dimonds.textTwist());
+        Dimonds.TwistUsl();
+        sleep(500);
+        Dimonds.btnTwistCross();
+        Assert.assertEquals("КРУТИТЬ\n100",Dimonds.TwistUsl());
         sleep(200);
 }
 }
