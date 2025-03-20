@@ -1,5 +1,7 @@
 package ru.tutor.test;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,6 +21,7 @@ import static java.lang.Thread.sleep;
 
 public class coins_dimonds {
 
+    private static final Log log = LogFactory.getLog(coins_dimonds.class);
     public static WebDriver driver;
     public static String url = "https://client.dev.tutorplace.ru/login";
 //    https://client.dev.tutorplace.ru/login
@@ -77,6 +80,7 @@ public class coins_dimonds {
         ClientPrime.btnEnter();
         sleep(6000);
 
+        System.out.println(ClientPrime.atrNull());
         Dimonds.clickBtnFortune();
         sleep(200);
         Assert.assertEquals("Также вы имеете возможность крутить колесо за монетки — которые легко заработать занимаясь саморазвитием: проходя уроки, выполняя задания и прокачивая свой уровень", Dimonds.textModalka());
@@ -99,7 +103,7 @@ public class coins_dimonds {
         sleep(100);
         Assert.assertEquals("КРУТИТЬ", Dimonds.textTwist());
         Dimonds.TwistUsl();
-        sleep(500);
+        sleep(1500);
         Dimonds.btnTwistCross();
         Assert.assertEquals("КРУТИТЬ\n100",Dimonds.TwistUsl());
         sleep(200);
