@@ -29,11 +29,11 @@ public class LoginAndPass extends Driver {
     private static WebElement emailReg;
 
     public static void getEmail() {
-//        emailReg.sendKeys("lipa@test.ru");
-        emailReg.sendKeys("post@test.ru");
+//        emailReg.sendKeys("request@test.ru");
+        emailReg.sendKeys("coins@test.ru");
     }
 
-    //post@test.ru
+    //coins@test.ru - прод
 //
 
 

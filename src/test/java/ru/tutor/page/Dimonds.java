@@ -1,6 +1,7 @@
 package ru.tutor.page;
 
 import com.github.dockerjava.api.model.Driver;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,7 +29,7 @@ public class Dimonds extends Driver {
         banner.click();
     }
 
-    @FindBy(xpath = "/html/body/div[2]/div/div/div/div/div[2]/button")
+    @FindBy(css = "body > div:nth-child(8) > div > div > div > div > div.swiper.swiper-initialized.swiper-horizontal.sc-gBJoiw.fhhFmY.swiper-backface-hidden > button")
     private static WebElement buttonNext;
 
     public static String textButton() {
@@ -39,14 +40,14 @@ public class Dimonds extends Driver {
         buttonNext.click();
     }
 
-    @FindBy(xpath = "/html/body/div[2]/div/div/div/div/div[2]/div[1]/div[3]/p")
+    @FindBy(css = "body > div:nth-child(8) > div > div > div > div > div.swiper.swiper-initialized.swiper-horizontal.sc-gBJoiw.fhhFmY.swiper-backface-hidden > div.swiper-wrapper > div.swiper-slide.swiper-slide-active > p")
     private static WebElement textMoneyBanner;
 
     public static String getText() {
         return textMoneyBanner.getText().trim();
     }
 
-    @FindBy(xpath = "/html/body/div[2]/div/div/div/div/div[2]/div[1]/div[4]/p")
+    @FindBy(css = "body > div:nth-child(8) > div > div > div > div > div.swiper.swiper-initialized.swiper-horizontal.sc-gBJoiw.fhhFmY.swiper-backface-hidden > div.swiper-wrapper > div.swiper-slide.swiper-slide-active > p")
     private static WebElement fourTextPage;
 
     public static String getFourPage() {
@@ -88,6 +89,15 @@ public class Dimonds extends Driver {
         return WelcomeUsl.getText().trim();
     }
 
+//    public static boolean textUslWel(){
+//        try {
+//            WelcomeUsl.getText().trim();
+//            return WelcomeUsl.isDisplayed();
+//        } catch (NoSuchElementException e){
+//            return false;
+//        }
+//    }
+
     @FindBy(css = "body > div._ModalSheet_6fudz_1 > div > div > button")
 
     private static WebElement crossBtn;
@@ -124,14 +134,10 @@ public class Dimonds extends Driver {
         return twist.getText().trim();
     }
 
-    public static void btnTwist() {
-        twist.click();
-    }
-
     public static String TwistUsl() {
         if (twist.getText().equals("КРУТИТЬ")) {
             twist.click();
-        } else if (!twist.getText().equals("КРУТИТЬ")) {
+        } else if (twist.getText().equals("КРУТИТЬ\n30")) {
             return twist.getText();
         }
         return twist.getText();
