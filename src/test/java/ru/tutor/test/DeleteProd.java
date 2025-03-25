@@ -27,7 +27,6 @@ public class DeleteProd {
     public void setupAll() {
         driver = new ChromeDriver();
         ClientPrime Client = new ClientPrime(driver);
-        WatchVideo Video = new WatchVideo(driver);
         kontacts kontacts = new kontacts(driver);
         LoginAndPass loginAndPass = new LoginAndPass(driver);
         modal modal = new modal(driver);
