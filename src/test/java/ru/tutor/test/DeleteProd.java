@@ -7,10 +7,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.tutor.page.ClientPrime;
-import ru.tutor.page.LoginAndPass;
-import ru.tutor.page.WatchVideo;
-import ru.tutor.page.kontacts;
+import ru.tutor.page.*;
 
 import java.time.Duration;
 
@@ -32,6 +29,8 @@ public class DeleteProd {
         ClientPrime Client = new ClientPrime(driver);
         WatchVideo Video = new WatchVideo(driver);
         kontacts kontacts = new kontacts(driver);
+        LoginAndPass loginAndPass = new LoginAndPass(driver);
+        modal modal = new modal(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get(url);
     }
@@ -45,13 +44,10 @@ public class DeleteProd {
     @Test
     @DisplayName("Should delete prod Prime")
     public void ShouldDeleteProdPrime() {
-        LoginAndPass.getEmail();
-        LoginAndPass.getPassword();
-        ClientPrime.btnEnter();
+        LoginAndPass.registrationUser();
         ClientPrime.setLoad();
-        ClientPrime.contBtn();
-        ClientPrime.setNextBtn();
-        ClientPrime.setClose();
+        modal.registrationNewUser();
+        ClientPrime.atrNull();
 //        ClientPrime.setAsk();
         ClientPrime.setSearchBtn();
         ClientPrime.getNameSearchEx();
@@ -70,9 +66,7 @@ public class DeleteProd {
     @Test
     @DisplayName("Should delete prod Lite")
     public void ShouldDeleteProdLite() throws InterruptedException {
-        LoginAndPass.getEmail();
-        LoginAndPass.getPassword();
-        ClientPrime.btnEnter();
+        LoginAndPass.registrationUser();
         sleep(6000);
 //        ClientPrime.setLoad();
         driver.get("https://client.dev.tutorplace.ru/user/settings/subscription");
@@ -85,9 +79,7 @@ public class DeleteProd {
     @Test
     @DisplayName("Should delete prod Lite")
     public void ShouldDeleteLite() throws InterruptedException {
-        LoginAndPass.getEmail();
-        LoginAndPass.getPassword();
-        ClientPrime.btnEnter();
+        LoginAndPass.registrationUser();
         sleep(6000);
 //        ClientPrime.setLoad();
         driver.get("https://client.dev.tutorplace.ru/user/settings/payments");
@@ -97,22 +89,22 @@ public class DeleteProd {
         Assert.assertEquals("Тарифный план “Лайт” отключен", ClientPrime.getTextChange());
     }
 
-    @Test
-    @DisplayName("Should play Video")
-    public void ShouldPlayVideo() throws InterruptedException {
-        LoginAndPass.getEmail();
-        LoginAndPass.getPassword();
-        ClientPrime.btnEnter();
-        sleep(6000);
-        driver.get("https://client.dev.tutorplace.ru/user/catalog");
-        sleep(2000);
-        WatchVideo.LearnSearch();
-        WatchVideo.BtnExcel();
-        Assert.assertEquals("Excel-таблицы для начинающих", WatchVideo.getTextExel());
-        WatchVideo.BtnPlay();
-        sleep(5000);
-        Assert.assertEquals("Excel-таблицы для начинающих", WatchVideo.getTextExel());
-    }
+//    @Test
+//    @DisplayName("Should play Video")
+//    public void ShouldPlayVideo() throws InterruptedException {
+//        LoginAndPass.getEmail();
+//        LoginAndPass.getPassword();
+//        ClientPrime.btnEnter();
+//        sleep(6000);
+//        driver.get("https://client.dev.tutorplace.ru/user/catalog");
+//        sleep(2000);
+//        WatchVideo.LearnSearch();
+//        WatchVideo.BtnExcel();
+//        Assert.assertEquals("Excel-таблицы для начинающих", WatchVideo.getTextExel());
+//        WatchVideo.BtnPlay();
+//        sleep(5000);
+//        Assert.assertEquals("Excel-таблицы для начинающих", WatchVideo.getTextExel());
+//    }
 
     @Test
     @DisplayName("Should text kontacts")

@@ -20,7 +20,7 @@ public class LoginAndPass extends Driver {
     private static WebElement email;
 
     public static void inputEmail() {
-        email.sendKeys("b6ce79fa16@emaily.pro");
+        email.sendKeys("returncolume12@emaily.pro");
     }
 
     // Регистрация с клиента
@@ -30,7 +30,7 @@ public class LoginAndPass extends Driver {
 
     public static void getEmail() {
 //        emailReg.sendKeys("request@test.ru");
-        emailReg.sendKeys("coins@test.ru");
+        emailReg.sendKeys("returncolume1862@emaily.pro");
     }
 
     //coins@test.ru - прод
@@ -43,4 +43,42 @@ public class LoginAndPass extends Driver {
     public static void getPassword() {
         password.sendKeys("12345678");
     }
+
+    @FindBy(name = "repeatPassword")
+    private static WebElement repeatPassword;
+
+    public static void getRepeat(){
+        repeatPassword.sendKeys("12345678");
+    }
+
+    @FindBy(name = "name")
+    private static WebElement name;
+
+    public static void getname() {
+        name.sendKeys("dfn");
+    }
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[2]/div/form/div[2]/div[2]/div[1]/button")
+
+    private static WebElement nextBtn;
+
+    public static void setNext(){
+        nextBtn.click();
+    }
+
+    public static void registrationNewUser(){
+        getname();
+        setNext();
+        getEmail();
+        getPassword();
+        getRepeat();
+        setNext();
+    }
+
+    public static void registrationUser(){
+        getEmail();
+        getPassword();
+        ClientPrime.btnEnter();
+    }
+
 }

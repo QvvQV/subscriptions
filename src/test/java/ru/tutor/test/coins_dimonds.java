@@ -48,15 +48,11 @@ public class coins_dimonds {
     @DisplayName("Should Leaders")
     public void ShouldLeaders() throws InterruptedException
     {
-        LoginAndPass.getEmail();
-        LoginAndPass.getPassword();
-        ClientPrime.btnEnter();
+        LoginAndPass.registrationUser();
         sleep(6000);
-
         System.out.println(ClientPrime.atrNull());
         driver.get("https://client.dev.tutorplace.ru/user/my-profile/leaders");
         sleep(4000);
-//        Assert.assertEquals("Монеты", Dimonds.textMoney());
         Dimonds.clickBanner();
         sleep(500);
         Assert.assertEquals("Далее", Dimonds.textButton());
@@ -76,9 +72,7 @@ public class coins_dimonds {
     @DisplayName("Should Fortune")
     public void ShouldFortune() throws InterruptedException
     {
-        LoginAndPass.getEmail();
-        LoginAndPass.getPassword();
-        ClientPrime.btnEnter();
+        LoginAndPass.registrationUser();
         sleep(6000);
 
 //        System.out.println(ClientPrime.atrNull());

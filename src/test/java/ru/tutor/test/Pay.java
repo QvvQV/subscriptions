@@ -34,6 +34,7 @@ public class Pay {
         PayMain Pay = new PayMain(driver);
         kurs kurs = new kurs(driver);
         LoginAndPass loginAndPass = new LoginAndPass(driver);
+        modal modal = new modal(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get(url);
     }
@@ -120,4 +121,16 @@ public class Pay {
         wait.until(visibilityOfElementLocated(By.cssSelector("body > div > div > section > h2")));
     }
 
+    @Test
+    @DisplayName("Registration on website New User")
+    public void RegistrationOnWebsite() throws InterruptedException {
+        driver.get("https://client.dev.tutorplace.ru/register");
+        LoginAndPass.registrationNewUser();
+        sleep(6000);
+        modal.registrationNewUser();
+//        sleep(2000);
+        ClientPrime.atrNull();
+//        sleep(1000);
+
+}
 }
