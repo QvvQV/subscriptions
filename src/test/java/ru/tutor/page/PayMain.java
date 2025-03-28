@@ -1,7 +1,9 @@
 package ru.tutor.page;
 
 import com.github.dockerjava.api.model.Driver;
+import org.checkerframework.checker.units.qual.K;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,6 +25,7 @@ public class PayMain extends Driver {
     }
 
     public static void clickBtnStart() {
+        BtnStart.sendKeys(Keys.PAGE_DOWN);
         BtnStart.click();
     }
 
@@ -34,6 +37,8 @@ public class PayMain extends Driver {
     }
 
     public static void getDostup() {
+//        PgUp();
+//        LoginAndPass.inputEmail();
         Dostup.click();
     }
 
@@ -63,6 +68,7 @@ public class PayMain extends Driver {
     private static WebElement Pay;
 
     public static void getPay() {
+        getNumber();
         Pay.click();
     }
 
@@ -97,4 +103,13 @@ public class PayMain extends Driver {
         public static void btnSuccess() {
         success.click();
     }
+
+    @FindBy(css = "#root > div.sc-eDPaeg.dKOioX > div.sc-hJEfkz.jxhyxE > div > div > div.sc-JmfEB.bpcHKh > button")
+    private static WebElement access;
+
+        public static void getAccess(){
+           if (access.isDisplayed() && access.isEnabled()){
+               access.click();
+        }
+        }
 }

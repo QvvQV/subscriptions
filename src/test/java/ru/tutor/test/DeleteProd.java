@@ -66,11 +66,12 @@ public class DeleteProd {
     @DisplayName("Should delete prod Lite")
     public void ShouldDeleteProdLite() throws InterruptedException {
         LoginAndPass.registrationUser();
-        sleep(6000);
-//        ClientPrime.setLoad();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        modal.registrationNewUser();
+        ClientPrime.atrNull();
         driver.get("https://client.dev.tutorplace.ru/user/settings/subscription");
 //        https://client.tutorplace.ru/user/settings/subscription
-        sleep(2000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         ClientPrime.getChangeLite();
         Assert.assertEquals("Тарифный план “Полный доступ” отключен", ClientPrime.getTextLite());
     }
@@ -79,11 +80,12 @@ public class DeleteProd {
     @DisplayName("Should delete prod Lite")
     public void ShouldDeleteLite() throws InterruptedException {
         LoginAndPass.registrationUser();
-        sleep(6000);
-//        ClientPrime.setLoad();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        modal.registrationNewUser();
+        ClientPrime.atrNull();
         driver.get("https://client.dev.tutorplace.ru/user/settings/payments");
 //        https://client.tutorplace.ru/user/settings/payments
-        sleep(2000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         ClientPrime.getChange();
         Assert.assertEquals("Тарифный план “Лайт” отключен", ClientPrime.getTextChange());
     }

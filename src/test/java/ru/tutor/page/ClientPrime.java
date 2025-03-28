@@ -111,6 +111,7 @@ public class ClientPrime extends Driver {
     }
 
     public static void getChangeLite() { //Lite + main
+        change_control.isDisplayed();
         change_control.click();
     }
 
@@ -200,6 +201,7 @@ public class ClientPrime extends Driver {
     }
 
     public static void getChange() {
+        btn_change.isDisplayed();
         btn_change.click();
     }
 }

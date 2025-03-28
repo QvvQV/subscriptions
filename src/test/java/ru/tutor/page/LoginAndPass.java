@@ -20,7 +20,7 @@ public class LoginAndPass extends Driver {
     private static WebElement email;
 
     public static void inputEmail() {
-        email.sendKeys("returncolume12@emaily.pro");
+        email.sendKeys("return35@emaily.pro");
     }
 
     // Регистрация с клиента
@@ -30,7 +30,7 @@ public class LoginAndPass extends Driver {
 
     public static void getEmail() {
 //        emailReg.sendKeys("request@test.ru");
-        emailReg.sendKeys("returncolume1862@emaily.pro");
+        emailReg.sendKeys("return36@emaily.pro");
     }
 
     //coins@test.ru - прод

@@ -6,14 +6,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.tutor.page.*;
 
 import java.time.Duration;
+import java.util.Set;
 
 import static java.lang.Thread.sleep;
+import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 //import static org.graalvm.compiler.nodeinfo.InputType.Condition;
@@ -35,6 +39,7 @@ public class Pay {
         kurs kurs = new kurs(driver);
         LoginAndPass loginAndPass = new LoginAndPass(driver);
         modal modal = new modal(driver);
+        Card card = new Card(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get(url);
     }
@@ -114,7 +119,7 @@ public class Pay {
         sleep(500);
         PayMain.clickBankBtn();
         Assert.assertEquals("Номер карты", PayMain.textCard());
-        PayMain.getNumber();
+//        PayMain.getNumber();
         PayMain.getPay();
         driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
         PayMain.btnSuccess();
@@ -122,15 +127,31 @@ public class Pay {
     }
 
     @Test
-    @DisplayName("Registration on website New User")
+    @DisplayName("Registration on website New User + success Pay")
     public void RegistrationOnWebsite() throws InterruptedException {
-        driver.get("https://client.dev.tutorplace.ru/register");
-        LoginAndPass.registrationNewUser();
-        sleep(6000);
+        driver.get("https://client.dev.tutorplace.ru/");
+        LoginAndPass.registrationUser();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
         modal.registrationNewUser();
-//        sleep(2000);
         ClientPrime.atrNull();
-//        sleep(1000);
+        driver.get("https://client.dev.tutorplace.ru/user/subscribe");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        ClientPrime.atrNull();
+        PayMain.getAccess();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Object[] windowHandles = driver.getWindowHandles().toArray();
+        driver.switchTo().window((String) windowHandles[1]);
+        String title = driver.getTitle();
+        Assert.assertEquals("Покупка доступа TutorPlace", title);
+        Card.setCard();
+        driver.getWindowHandles();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
+        driver.switchTo().frame(0);
+        Card.getSuccess();
+        driver.switchTo().window((String) windowHandles[0]);
+        String title0 = driver.getTitle();
+        Assert.assertEquals("Оформить подписку | TutorPlace", title0);
 
+//        Assert.assertEquals("Оплата картой прошла успешно",Card.getTextSuccess());
 }
 }
