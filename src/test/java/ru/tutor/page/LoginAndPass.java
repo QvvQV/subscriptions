@@ -1,12 +1,18 @@
 package ru.tutor.page;
 
+import com.codeborne.selenide.SelenideElement;
 import com.github.dockerjava.api.model.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-//import static com.codeborne.selenide.Selenide.*;
-//import static com.codeborne.selenide.Selenide.closeWebDriver;
+import com.github.javafaker.Faker;
+
+import java.util.Locale;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class LoginAndPass extends Driver {
 
@@ -16,11 +22,12 @@ public class LoginAndPass extends Driver {
 
     //Оплата с главной страницы
 
-    @FindBy(css = "body > div > section.w-full.bg-\\[\\#7200CC\\].py-\\[60px\\].px-\\[50px\\].rounded-\\[20px\\].mb-\\[40px\\].max-sm\\:p-\\[30px\\].font-nunito.order-section > div > div > div > form > input")
+     @FindBy(css = "input")
     private static WebElement email;
 
     public static void inputEmail() {
-        email.sendKeys("return35@emaily.pro");
+        email.isDisplayed();
+        email.sendKeys("lite29@emaily1.pro");
     }
 
     // Регистрация с клиента
@@ -29,19 +36,21 @@ public class LoginAndPass extends Driver {
     private static WebElement emailReg;
 
     public static void getEmail() {
-//        emailReg.sendKeys("request@test.ru");
-        emailReg.sendKeys("return36@emaily.pro");
+        emailReg.sendKeys("lite40@emaily.pro");
     }
-
-    //coins@test.ru - прод
-//
-
 
     @FindBy(name = "password")
     private static WebElement password;
 
     public static void getPassword() {
         password.sendKeys("12345678");
+    }
+
+    @FindBy(name = "newPassword")
+    private static WebElement newPass;
+
+    public static void getNewPass(){
+        newPass.sendKeys("12345678");
     }
 
     @FindBy(name = "repeatPassword")
@@ -58,7 +67,7 @@ public class LoginAndPass extends Driver {
         name.sendKeys("dfn");
     }
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div[2]/div/form/div[2]/div[2]/div[1]/button")
+    @FindBy(css = "button")
 
     private static WebElement nextBtn;
 
@@ -80,5 +89,6 @@ public class LoginAndPass extends Driver {
         getPassword();
         ClientPrime.btnEnter();
     }
+
 
 }

@@ -49,10 +49,12 @@ public class coins_dimonds {
     public void ShouldLeaders() throws InterruptedException
     {
         LoginAndPass.registrationUser();
-        sleep(6000);
-        System.out.println(ClientPrime.atrNull());
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        modal.setHome();
+        ClientPrime.atrNull();
+//        System.out.println(ClientPrime.atrNull());
         driver.get("https://client.dev.tutorplace.ru/user/my-profile/leaders");
-        sleep(4000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
         Dimonds.clickBanner();
         sleep(500);
         Assert.assertEquals("Далее", Dimonds.textButton());
@@ -73,7 +75,7 @@ public class coins_dimonds {
     public void ShouldFortune() throws InterruptedException
     {
         LoginAndPass.registrationUser();
-        sleep(6000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
 
 //        System.out.println(ClientPrime.atrNull());
         Dimonds.clickBtnFortune();
@@ -98,7 +100,7 @@ public class coins_dimonds {
         sleep(100);
         Assert.assertEquals("КРУТИТЬ", Dimonds.textTwist());
         Dimonds.TwistUsl();
-        sleep(3000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         Dimonds.btnTwistCross();
         Assert.assertEquals("КРУТИТЬ\n30",Dimonds.TwistUsl());
         sleep(200);

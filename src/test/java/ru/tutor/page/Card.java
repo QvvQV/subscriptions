@@ -15,10 +15,31 @@ public class Card extends Driver {
         PageFactory.initElements(driver, this);
     }
 
+    // Оплата с баннера Excel
+
+    @FindBy(css = "tui-input-card-group > div:nth-child(1) > label")
+    private static WebElement numberCard;
+
+    public static void numberCardFromExcel() {
+        if (numberCard.isDisplayed()) {
+            try {
+                numberCard.sendKeys("42424242424242420455555");
+
+            } catch (NoSuchElementException e) {
+            }
+        }
+    }
+
+    public static String textCard() {
+        return numberCard.getText().trim();
+    }
+
+    // Оплата с баннера в личном кабинете
+
     @FindBy(id = "card")
     private static WebElement card;
 
-    public static void numberCard() {
+    public static void numberCardFromBanner() {
         card.sendKeys("4242424242424242");
     }
 
@@ -36,23 +57,19 @@ public class Card extends Driver {
         cvv.sendKeys("555");
     }
 
-    @FindBy(css = "#app > div > div.checkout > div > div:nth-child(2) > div.content > div > div > div.payment-process__process > div > form > div > div > div.form-confirm > div > button")
+    @FindBy(tagName = "button")
     private static WebElement btnPay;
 
     private static void getPay() {
-        btnPay.click();
+        if (btnPay.isDisplayed() && btnPay.isEnabled()) {
+            btnPay.click();
+        }
     }
 
-//    public static void setCard(){
-//        numberCard();
-//        getData();
-//        getCvv();
-//        getPay();
-//    }
-
+    // ввод данных банковской карточки на др вкладке
     public static boolean setCard() {
         try {
-            numberCard();
+            numberCardFromBanner();
             getData();
             getCvv();
             getPay();
@@ -69,26 +86,4 @@ public class Card extends Driver {
         successBtn.isDisplayed();
         successBtn.click();
     }
-
-    @FindBy(css = "#app > div > div > div > div > div.help > button")
-    private static WebElement failBtn;
-
-    public static void getFail() {
-        failBtn.click();
-    }
-
-    @FindBy(css = "#app > div > div > div > div > div.cancel > button")
-    private static WebElement cancelBtn;
-
-    public static void getCancel() {
-        cancelBtn.click();
-    }
-
-    @FindBy(css = "#app > div > div.checkout > div > div:nth-child(1) > div.content > div.result > div > div.content")
-    private static WebElement textSuccess;
-
-    public static String getTextSuccess() {
-        return textSuccess.getText().trim();
-    }
-
 }
